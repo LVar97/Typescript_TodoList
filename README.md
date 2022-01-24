@@ -1,3 +1,3 @@
-# Getting Started with Create React App
+# Typescript_TodoList
 
 Простой проект на react+typescript
