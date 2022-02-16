@@ -17,3 +17,6 @@
 - Axios
 - Css библиотек https://materializecss.com/
 
+## Ссылка на лайф-версию
+
+https://lvar97.github.io/Typescript_TodoList/
