@@ -1,55 +1,77 @@
 import React,  {useState, useEffect} from "react";
 import { TodoForm } from '../components/TodoForm';
 import { TodoList } from '../components/TodoList';
+import { TodoPopup } from "../components/common/Popup/TodoPopup";
+import { useActions } from "../hook/useActions";
 import { ITodo } from '../Interfaces';
 
 export const TodosPage: React.FC = () => {
 
-	const [todos, setTodos] = useState<ITodo[]>([]);
+  const [todo, setTodo] = useState<ITodo>({
+    userId: 1,
+    id: 1,
+    title: '',
+    completed: false
+  });
 
-  useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem('todos') || '[]') as ITodo[];
-    setTodos(saved);
-  }, [])
+  const [isOpen, setIsOpen] = useState(false);
+  const {setTodoAdd, setTodoDelete, setTodoChange, setTodoCompleted} = useActions();
 
-  useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos))
-  }, [todos])
+  const isTodoPopupOpened = (todo: ITodo) => {
+    setIsOpen(!isOpen);
+    setTodo(todo);
+  }
+ 
+  const isTodoPopupClosed = () => {
+    setIsOpen(!isOpen);
+  }
 
-  const addHandler = (title: string) => {
+  const addTodo = (title: string) => {
     const newTodo: ITodo = {
-      title: title,
+      userId: 1,
       id: Date.now(),
+      title,
       completed: false
     }
-    
-    setTodos(prev => [newTodo, ...prev])
+    setTodoAdd(newTodo);
   }
 
-  const toggleHandler = (id: number) => {
-    setTodos(prev => prev.map(todo => {
-      if (todo.id === id) {
-        todo.completed = !todo.completed
-      }
-      return todo
-    }))
+  const changeTodo = (title: string) => {
+    const changeTodo: ITodo = {
+      userId: todo.userId,
+      id: todo.id,
+      title,
+      completed: todo.completed
+    }
+    setTodoChange(changeTodo);
   }
 
-  const removeHandler = (id: number) =>  {
+
+  const toggleHandler = (todo: ITodo) => {
+    setTodoCompleted(todo);
+  }
+
+  const removeHandler = (todo: ITodo) =>  {
     const shouldRemove = window.confirm('Вы уверены?')
     if (shouldRemove) {
-      setTodos(prev => prev.filter(todo => todo.id !== id))
+      setTodoDelete(todo);
     }
   }
 
 	return (
-		<>
-			<TodoForm onAdd={addHandler}/>
+		<div className="spiner">
+			<TodoForm onAdd={addTodo}/>
 			<TodoList 
-			todos={todos}
 			onToggle={toggleHandler}
+      onOpen={isTodoPopupOpened}
 			onRemove={removeHandler}
 			/>
-		</>
+      <TodoPopup 
+      isOpen={isOpen}
+      onClose={isTodoPopupClosed}
+      onChange={changeTodo}
+      todo={todo}
+      />
+		</div>
 	)
 };

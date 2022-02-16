@@ -12,8 +12,8 @@ const App: React.FC = () => {
       <Navbar/>
       <div className="container">
         <Routes>
-          <Route element={<TodosPage/>} path="/"/>
-          <Route element={<AboutPage/>} path="/about"/>
+          <Route element={<AboutPage/>} path="/"/>
+          <Route element={<TodosPage/>} path="/about"/>
         </Routes>
       </div>
     </BrowserRouter>
