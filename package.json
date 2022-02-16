@@ -2,6 +2,7 @@
   "name": "typescript_1",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://lvar97.github.io/Typescript_TodoList/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
