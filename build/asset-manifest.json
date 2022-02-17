@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Typescript_TodoList/static/css/main.e23edc05.css",
+    "main.js": "/Typescript_TodoList/static/js/main.17c0edf7.js",
+    "index.html": "/Typescript_TodoList/index.html",
+    "main.e23edc05.css.map": "/Typescript_TodoList/static/css/main.e23edc05.css.map",
+    "main.17c0edf7.js.map": "/Typescript_TodoList/static/js/main.17c0edf7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e23edc05.css",
+    "static/js/main.17c0edf7.js"
+  ]
+}
