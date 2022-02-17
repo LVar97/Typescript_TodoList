@@ -6,14 +6,15 @@ import { TodosPage } from './pages/TodosPage';
 
 const App: React.FC = () => {
   return (
-    <>
+    <><BrowserRouter>
       <Navbar/>
       <div className="container">
         <Routes>
-          <Route path="/" element={<AboutPage/>}/>
-          <Route element={<TodosPage/>} path="/about"/>
+          <Route path="/Typescript_TodoList" element={<AboutPage/>}/>
+          <Route element={<TodosPage/>} path="/todo"/>
         </Routes>
       </div>
+      </BrowserRouter>
     </>
   );
 }

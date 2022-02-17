@@ -1,17 +1,22 @@
 import React from "react";
-import {NavLink} from "react-router-dom"
-import logo from "../icons/to-do.png";
+import {NavLink} from "react-router-dom";
 
-export const Navbar: React.FunctionComponent = () => (
-	<nav>
-		<div className="nav-wrapper purple darken-2 px1">
-			<a href="/" className="brand-logo lm">
-				ToDoList
-			</a>
-			<ul className="right hide-on-med-and-down">
-				<li className="ls"><NavLink to="/">Главная</NavLink></li>
-				<li className="ls"><NavLink to="/about">Список дел</NavLink></li>
-			</ul>
-		</div>
-</nav>
-)
+export const Navbar: React.FunctionComponent = () => {
+
+
+	return (
+		<>
+			<nav>
+				<div className="nav-wrapper purple darken-2 px1" data-target="mobile-demo">
+					<a href="/Typescript_TodoList" className="brand-logo left lm">
+						ToDoList
+					</a>
+					<ul className="right">
+						<li className="ls"><NavLink to="/Typescript_TodoList">Главная</NavLink></li>
+						<li className="ls"><NavLink to="/todo">Список дел</NavLink></li>
+					</ul>
+				</div>
+			</nav>
+		</>
+	)
+}
